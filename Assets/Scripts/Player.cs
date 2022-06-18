@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour{
     [SerializeField] private float speed = 5f;
-    [SerializeField] private Armory _armory;
+    public Armory Armory;
     [SerializeField] private Animator animatorPlayer;
 
     [SerializeField] private Transform body;
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour{
 
     void Attack(){
         if (Input.GetKey(KeyCode.Space)){
-            _armory.ShotFromGun();
+            Armory.ShotFromGun();
         }
     }
 }

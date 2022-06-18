@@ -4,18 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Armory : MonoBehaviour{
+    public enum GunType{
+        Pistol,
+        ShotGun,
+        AKM
+    }
+
     [SerializeField] private Gun[] guns;
     private int currentIndexOfGun;
+
+
+    public void AddAmmoToGun(GunType gunType, int amountOfAmmunition){
+        for (int i = 0; i < guns.Length; i++){
+            if (guns[i]._gunType == gunType){
+                guns[i].AddAmmo(amountOfAmmunition);
+            }
+        }
+    }
 
     public void ShotFromGun(){
         guns[currentIndexOfGun].Shot();
     }
 
     private void Update(){
-        CheckInputForChangeGuns();
+        ChangeGunByInput();
     }
 
-    void CheckInputForChangeGuns(){
+    private void ChangeGunByInput(){
         int newIndex = -1;
         if (Input.GetKeyDown(KeyCode.Alpha1)){
             newIndex = 0;
@@ -39,6 +54,7 @@ public class Armory : MonoBehaviour{
         for (int i = 0; i < guns.Length; i++){
             guns[i].gameObject.SetActive(false);
         }
+
         guns[indexOfNewGun].gameObject.SetActive(true);
     }
 }
