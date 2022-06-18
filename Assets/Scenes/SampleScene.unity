@@ -1581,6 +1581,7 @@ MonoBehaviour:
   speed: 5
   _armory: {fileID: 701960340}
   animatorPlayer: {fileID: 95782877699583645}
+  body: {fileID: 1896962676}
 --- !u!137 &137937364692716393
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

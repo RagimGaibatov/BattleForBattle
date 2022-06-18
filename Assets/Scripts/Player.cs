@@ -8,6 +8,8 @@ public class Player : MonoBehaviour{
     [SerializeField] private Armory _armory;
     [SerializeField] private Animator animatorPlayer;
 
+    [SerializeField] private Transform body;
+
 
     private void Update(){
         Move();
@@ -18,7 +20,15 @@ public class Player : MonoBehaviour{
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputForward = Input.GetAxis("Vertical");
 
-        transform.Translate(inputHorizontal * Time.deltaTime * speed, 0f, inputForward * Time.deltaTime * speed);
+        Vector3 vectorMove = new Vector3(inputHorizontal, 0f, inputForward).normalized;
+
+        transform.Translate(vectorMove * Time.deltaTime * speed);
+
+        if (vectorMove != Vector3.zero){
+            body.transform.rotation = Quaternion.LookRotation(vectorMove);
+        }
+
+
         if (inputForward != 0 || inputHorizontal != 0){
             animatorPlayer.SetTrigger("Run");
         }
