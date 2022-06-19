@@ -4,19 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Armory : MonoBehaviour{
-    public enum GunType{
-        Pistol,
-        ShotGun,
-        AKM
-    }
-
     [SerializeField] private Gun[] guns;
     private int currentIndexOfGun;
 
 
-    public void AddAmmoToGun(GunType gunType, int amountOfAmmunition){
+    public void AddAmmoToGun(Type gunType, int amountOfAmmunition){
         for (int i = 0; i < guns.Length; i++){
-            if (guns[i]._gunType == gunType){
+            if (guns[i].GetType() == gunType){
                 guns[i].AddAmmo(amountOfAmmunition);
             }
         }
