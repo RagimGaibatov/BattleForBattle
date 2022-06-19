@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  lifeTime: 1
 --- !u!1 &7576147441231948023
 GameObject:
   m_ObjectHideFlags: 0

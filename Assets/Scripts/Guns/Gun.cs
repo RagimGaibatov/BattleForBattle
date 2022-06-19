@@ -4,44 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour{
-    [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private int ammo;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private Transform spawnBulletsTransform;
     [SerializeField] private float periodAttack;
     [SerializeField] private int bulletsInOneShot;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private Transform spawnBulletsTransform;
+    [SerializeField] private Bullet bulletPrefab;
 
+    private PoolOfBullets _poolOfBullets;
     private EnemySpawner _enemySpawner;
 
-
-    private float time = 0;
-
-
-    public void AddAmmo(int ammoToAdd){
-        ammo += ammoToAdd;
-    }
+    private float currentTimeFromLastShot = 0;
 
     private void Start(){
+        _poolOfBullets = new PoolOfBullets(bulletPrefab);
         _enemySpawner = FindObjectOfType<EnemySpawner>();
-        time = periodAttack;
+        currentTimeFromLastShot = periodAttack;
     }
 
     public void Shot(){
-        time += Time.deltaTime;
+        currentTimeFromLastShot += Time.deltaTime;
 
         if (ammo < 1) return;
-        if (time < periodAttack) return;
+        if (currentTimeFromLastShot < periodAttack) return;
 
         RotateToClosestEnemy();
-
-        for (int i = 0; i < bulletsInOneShot; i++){
-            Bullet bullet = Instantiate(bulletPrefab, spawnBulletsTransform.position + new Vector3(0f, 0f, i / 2f),
-                spawnBulletsTransform.rotation);
-            bullet.Init(bulletSpeed);
-        }
+        Bullet bullet = _poolOfBullets.GetBullet();
+        bullet.Init(spawnBulletsTransform.forward * bulletSpeed, spawnBulletsTransform.position);
 
         ammo -= bulletsInOneShot;
-        time = 0;
+        currentTimeFromLastShot = 0;
+    }
+
+    public void AddAmmo(int ammoToAdd){
+        ammo += ammoToAdd;
     }
 
     void RotateToClosestEnemy(){

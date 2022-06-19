@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour{
         enemies.Add(enemy);
     }
 
-    public void Reclaim(Enemy enemy){
+    public void ReclaimEnemy(Enemy enemy){
         enemies.Remove(enemy);
         Destroy(enemy.gameObject);
     }
