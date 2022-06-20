@@ -1,14 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Armory : MonoBehaviour{
     [SerializeField] private Gun[] guns;
     private int currentIndexOfGun;
 
+    public int CurrentIndexOfGun => currentIndexOfGun;
+    public int GunsLength => guns.Length;
 
-    private void Awake(){
+    public event Action OnChangeGun;
+
+    public void Start(){
         for (int i = 0; i < guns.Length; i++){
             if (guns[i].gameObject.activeInHierarchy){
                 currentIndexOfGun = i;
@@ -21,6 +26,7 @@ public class Armory : MonoBehaviour{
     private void Update(){
         ChangeGunByInput();
     }
+
 
     public void AddAmmoToGun(Type gunType, int amountOfAmmunition){
         for (int i = 0; i < guns.Length; i++){
@@ -59,5 +65,6 @@ public class Armory : MonoBehaviour{
         }
 
         guns[indexOfNewGun].gameObject.SetActive(true);
+        OnChangeGun?.Invoke();
     }
 }

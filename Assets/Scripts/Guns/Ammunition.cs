@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ammo : MonoBehaviour{
+public class Ammunition : MonoBehaviour{
     private enum GunType{
         Pistol,
         ShotGun,
@@ -15,6 +15,7 @@ public class Ammo : MonoBehaviour{
     [SerializeField] private GunType _gunType;
 
 
+   
     private void OnTriggerEnter(Collider other){
         if (other.GetComponent<Player>()){
             Armory armory = other.GetComponentInChildren<Armory>();

@@ -11,6 +11,9 @@ public class Gun : MonoBehaviour{
     [SerializeField] private Transform spawnBulletsTransform;
     [SerializeField] private Bullet bulletPrefab;
 
+
+    public int Ammo => ammo;
+
     private float updateTimeToRotate = 0.2f;
     private float timeFromLastRotate = 0f;
 
@@ -19,7 +22,10 @@ public class Gun : MonoBehaviour{
 
     private float currentTimeFromLastShot = 0;
 
-    private void Start(){
+    public event Action OnUpdateAmmo;
+
+
+    public void Start(){
         _poolOfBullets = new PoolOfBullets(bulletPrefab);
         _enemySpawner = FindObjectOfType<EnemySpawner>();
         currentTimeFromLastShot = periodAttack;
@@ -47,10 +53,12 @@ public class Gun : MonoBehaviour{
 
         ammo -= bulletsInOneShot;
         currentTimeFromLastShot = 0;
+        OnUpdateAmmo?.Invoke();
     }
 
     public void AddAmmo(int ammoToAdd){
         ammo += ammoToAdd;
+        OnUpdateAmmo?.Invoke();
     }
 
     void RotateToClosestEnemy(){
