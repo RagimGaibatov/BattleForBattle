@@ -35,6 +35,6 @@ public class Bullet : MonoBehaviour{
         time = 0;
         transform.position = position;
         rb.velocity = velocity;
-        transform.forward = velocity;
+        transform.rotation = Quaternion.LookRotation(velocity);
     }
 }

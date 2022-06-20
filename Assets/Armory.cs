@@ -8,6 +8,20 @@ public class Armory : MonoBehaviour{
     private int currentIndexOfGun;
 
 
+    private void Awake(){
+        for (int i = 0; i < guns.Length; i++){
+            if (guns[i].gameObject.activeInHierarchy){
+                currentIndexOfGun = i;
+                ChangeGun(currentIndexOfGun);
+                return;
+            }
+        }
+    }
+
+    private void Update(){
+        ChangeGunByInput();
+    }
+
     public void AddAmmoToGun(Type gunType, int amountOfAmmunition){
         for (int i = 0; i < guns.Length; i++){
             if (guns[i].GetType() == gunType){
@@ -16,31 +30,26 @@ public class Armory : MonoBehaviour{
         }
     }
 
+
     public void ShotFromGun(){
         guns[currentIndexOfGun].Shot();
     }
 
-    private void Update(){
-        ChangeGunByInput();
-    }
 
     private void ChangeGunByInput(){
-        int newIndex = -1;
         if (Input.GetKeyDown(KeyCode.Alpha1)){
-            newIndex = 0;
+            currentIndexOfGun = 0;
+            ChangeGun(currentIndexOfGun);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)){
-            newIndex = 1;
+            currentIndexOfGun = 1;
+            ChangeGun(currentIndexOfGun);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)){
-            newIndex = 2;
-        }
-
-        if (newIndex != -1){
-            ChangeGun(newIndex);
-            currentIndexOfGun = newIndex;
+            currentIndexOfGun = 2;
+            ChangeGun(currentIndexOfGun);
         }
     }
 
