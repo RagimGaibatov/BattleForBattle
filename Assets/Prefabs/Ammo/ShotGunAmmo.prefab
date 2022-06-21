@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e4096936ee7884cad4977405d6f77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountOfAmmunition: 16
+  _amountOfAmmunition: 6
   _gunType: 1
 --- !u!135 &6492151063307017950
 SphereCollider:

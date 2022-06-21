@@ -11,6 +11,9 @@ public class PlayerHealth : MonoBehaviour{
     [SerializeField] private RectTransform backgroundMaxHealth;
     [SerializeField] private RectTransform foregroundCurrentHealth;
 
+    public int CurrentHealth => currentHealth;
+    public int MAXHealth => maxHealth;
+
     private void Start(){
         _player = GetComponent<Player>();
         RefreshUIHealth();
@@ -25,6 +28,17 @@ public class PlayerHealth : MonoBehaviour{
 
         RefreshUIHealth();
     }
+
+
+    public void AddHealth(int health){
+        currentHealth += health;
+        if (currentHealth > maxHealth){
+            currentHealth = maxHealth;
+        }
+
+        RefreshUIHealth();
+    }
+
 
     void RefreshUIHealth(){
         var sizeDelta = foregroundCurrentHealth.sizeDelta;

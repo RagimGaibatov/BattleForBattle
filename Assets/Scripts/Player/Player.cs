@@ -10,6 +10,7 @@ public class Player : MonoBehaviour{
 
     [SerializeField] private Transform body;
 
+
     private bool isAlive = true;
 
 

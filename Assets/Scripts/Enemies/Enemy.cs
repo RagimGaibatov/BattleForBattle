@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour{
     public enum EnemyState{
-        Idling,
         SearchingTarget,
-        Attacking
+        Attacking,
+        Walking,
+        Dying
     }
 
+    [SerializeField] int goldForMurder;
     public EnemySpawner OriginSpawner{ private get; set; }
+
+    public int GoldForMurder => goldForMurder;
 
     public void Die(){
         OriginSpawner.ReclaimEnemy(this);
