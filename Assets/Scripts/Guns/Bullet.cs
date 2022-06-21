@@ -24,12 +24,11 @@ public class Bullet : MonoBehaviour{
     }
 
     private void OnTriggerEnter(Collider other){
-        if (other.TryGetComponent(out Enemy enemy)){
-            if (other.TryGetComponent(out Health health)){
-                health.TakeDamage(damage);
-            }
+        if (other.TryGetComponent(out EnemyHealth enemyHealth)){
+            enemyHealth.TakeDamage(damage);
         }
     }
+
 
     public void Init(Vector3 velocity, Vector3 position){
         time = 0;

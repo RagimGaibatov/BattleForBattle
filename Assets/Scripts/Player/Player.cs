@@ -10,6 +10,8 @@ public class Player : MonoBehaviour{
 
     [SerializeField] private Transform body;
 
+    private bool isAlive = true;
+
 
     private void Update(){
         Move();
@@ -17,6 +19,10 @@ public class Player : MonoBehaviour{
     }
 
     void Move(){
+        if (!isAlive){
+            return;
+        }
+
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputForward = Input.GetAxis("Vertical");
 
@@ -41,5 +47,14 @@ public class Player : MonoBehaviour{
         if (Input.GetKey(KeyCode.Space)){
             Armory.ShotFromGun();
         }
+    }
+
+    public void Die(){
+        animatorPlayer.SetTrigger("Death");
+        isAlive = false;
+    }
+
+    public void AnimationOfTakeDamage(){
+        animatorPlayer.SetTrigger("TakeDamage");
     }
 }

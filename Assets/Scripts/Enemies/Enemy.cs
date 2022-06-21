@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour{
         Attacking
     }
 
-    public Health Health;
     public EnemySpawner OriginSpawner{ private get; set; }
 
     public void Die(){
