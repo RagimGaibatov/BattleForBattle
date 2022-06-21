@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour{
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private float timeToSpawn;
+    [SerializeField] private int sizeOfAreaSpawn;
 
     private List<Enemy> enemies = new List<Enemy>();
 
@@ -18,8 +20,12 @@ public class EnemySpawner : MonoBehaviour{
     private void Update(){
         time += Time.deltaTime;
         if (time >= timeToSpawn){
-            Enemy enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+            float xPosition = transform.position.x + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
+            float zPosition = transform.position.z + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
+            Vector3 spawnPos = new Vector3(xPosition, transform.position.y, zPosition);
+            Enemy enemy = Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
             enemy.transform.SetParent(transform);
+
             enemy.OriginSpawner = this;
             AddEnemy(enemy);
             time = 0;
