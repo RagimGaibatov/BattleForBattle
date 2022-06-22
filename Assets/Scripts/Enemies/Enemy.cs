@@ -14,9 +14,11 @@ public class Enemy : MonoBehaviour{
     [SerializeField] int goldForMurder;
     public EnemySpawner OriginSpawner{ private get; set; }
 
-    public int GoldForMurder => goldForMurder;
 
     public void Die(){
         OriginSpawner.ReclaimEnemy(this);
+        Resources resources = FindObjectOfType<Resources>();
+        resources.Gold += goldForMurder;
+        resources.UpdateGoldText();
     }
 }

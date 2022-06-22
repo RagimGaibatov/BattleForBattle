@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerGold : MonoBehaviour{
+public class Resources : MonoBehaviour{
     [SerializeField] private int gold;
     [SerializeField] private TextMeshProUGUI goldText;
-
 
     public int Gold{
         get => gold;

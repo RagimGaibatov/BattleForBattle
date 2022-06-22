@@ -16,24 +16,29 @@ public class PlantButton : MonoBehaviour{
     [SerializeField] private LayerMask plantLayerMask;
 
     [SerializeField] private Vector3 sizeHalfBox;
-
-    private PlayerGold _playerGold;
-
     private GhostPlant _GhostPlant;
-
     private bool isActive = false;
 
+    private Resources _playerResources;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip errorBuildingClip;
+    [SerializeField] private AudioClip buildedClip;
+    [SerializeField] private AudioClip notEnoughGoldClip;
 
     private void Start(){
-        _playerGold = FindObjectOfType<PlayerGold>();
+        _playerResources = FindObjectOfType<Resources>();
         priceText.text = price.ToString();
         _GhostPlant = Instantiate(_ghostPlantPrefab, transform.position, Quaternion.identity);
         _GhostPlant.gameObject.SetActive(false);
     }
 
     public void TryPlacingPlant(){
-        if (_playerGold.Gold >= price){
+        if (_playerResources.Gold >= price){
             GhostOn();
+        }
+        else{
+            _audioSource.PlayOneShot(notEnoughGoldClip);
         }
     }
 
@@ -64,14 +69,15 @@ public class PlantButton : MonoBehaviour{
         if (Input.GetMouseButtonDown(0)){
             if (EventSystem.current.IsPointerOverGameObject() == false){
                 if (isTouching == false && isCursorOverGround){
-                    _playerGold.Gold -= price;
-                    _playerGold.UpdateGoldText();
+                    _playerResources.Gold -= price;
+                    _playerResources.UpdateGoldText();
                     Instantiate(_plantPrefab, _GhostPlant.transform.position, Quaternion.identity);
                     GhostOff();
+                    _audioSource.PlayOneShot(buildedClip);
                 }
-            }
 
-            GhostOff();
+                _audioSource.PlayOneShot(errorBuildingClip);
+            }
         }
     }
 

@@ -9,8 +9,7 @@ public class EnemySpawner : MonoBehaviour{
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private float timeToSpawn;
     [SerializeField] private int sizeOfAreaSpawn;
-
-    [SerializeField] private PlayerGold _playerGold;
+    
 
     private List<Enemy> enemies = new List<Enemy>();
 
@@ -40,8 +39,6 @@ public class EnemySpawner : MonoBehaviour{
     }
 
     public void ReclaimEnemy(Enemy enemy){
-        _playerGold.Gold += enemy.GoldForMurder;
-        _playerGold.UpdateGoldText();
         enemies.Remove(enemy);
         Destroy(enemy.gameObject);
     }

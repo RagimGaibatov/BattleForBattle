@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e4096936ee7884cad4977405d6f77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 74702fbd6f3c2004cb11b1a472a24477, type: 3}
   _amountOfAmmunition: 8
   _gunType: 0
 --- !u!1 &6232099071151075653

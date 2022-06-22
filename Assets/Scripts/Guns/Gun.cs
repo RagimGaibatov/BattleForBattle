@@ -11,6 +11,9 @@ public class Gun : MonoBehaviour{
     [SerializeField] private Transform spawnBulletsTransform;
     [SerializeField] private Bullet bulletPrefab;
 
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip shotSoundClip;
+
 
     public int Ammo => ammo;
 
@@ -54,6 +57,7 @@ public class Gun : MonoBehaviour{
         ammo -= bulletsInOneShot;
         currentTimeFromLastShot = 0;
         OnUpdateAmmo?.Invoke();
+        _audioSource.PlayOneShot(shotSoundClip);
     }
 
     public void AddAmmo(int ammoToAdd){
