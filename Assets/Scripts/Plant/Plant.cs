@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class Plant : MonoBehaviour{
     [SerializeField] private GameObject issuedItemPrefab;
@@ -20,4 +23,5 @@ public class Plant : MonoBehaviour{
     public void Die(){
         Destroy(gameObject);
     }
+    
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9063657798447777297}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 9063657798506995135}
   - component: {fileID: 9063657798506995133}
   - component: {fileID: 9063657798506995132}
-  m_Layer: 0
+  - component: {fileID: 4080283344166175635}
+  m_Layer: 7
   m_Name: PlantAK47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +58,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9063657798506995128}
-  m_LocalRotation: {x: -0, y: 0.49912745, z: -0, w: 0.86652863}
+  m_LocalRotation: {x: 0, y: 0.49913058, z: 0, w: 0.86652684}
   m_LocalPosition: {x: 5.71, y: 2.6, z: -6.2200003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   _plant: {fileID: 9063657798506995133}
+--- !u!65 &4080283344166175635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063657798506995128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 1, z: 0.6}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &9063657798548148304
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +143,7 @@ GameObject:
   - component: {fileID: 9063657798548148305}
   - component: {fileID: 9063657798548148311}
   - component: {fileID: 9063657798548148310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyPlant3Spores (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,7 +4830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9063657798984496371}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9063657799471198098}
   - component: {fileID: 9063657799471198097}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyPlant4EnvironmentMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4934,7 +4948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9063657799664378135}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4966,7 +4980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9063657799740253629}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4998,7 +5012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9063657799967713192}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5029,7 +5043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9063657800059076707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyPlant4Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

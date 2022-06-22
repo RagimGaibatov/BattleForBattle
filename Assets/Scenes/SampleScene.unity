@@ -410,7 +410,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218471414
 GameObject:
@@ -653,7 +653,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 392502375}
         m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
-        m_MethodName: TryBuyPlant
+        m_MethodName: TryPlacingPlant
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -714,12 +714,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantPrefab: {fileID: 1951570884998997951, guid: 9b2c90179e9d8bd42b26e25a02d22b21, type: 3}
+  _ghostPlantPrefab: {fileID: 1415032138680875787, guid: 8a27eb622bf280d48bd4e2511a8d763a, type: 3}
   price: 70
   priceText: {fileID: 1571331429}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _newPlant: {fileID: 0}
+  plantLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  sizeHalfBox: {x: 1, y: 2, z: 1}
 --- !u!1 &438044034
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +965,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 605583493}
         m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
-        m_MethodName: TryBuyPlant
+        m_MethodName: TryPlacingPlant
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1022,12 +1026,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantPrefab: {fileID: 701788924853464896, guid: dce9c82e7d5a74f43a7aad28209a53e0, type: 3}
+  _ghostPlantPrefab: {fileID: 8935221086434699733, guid: a8814fc343a768e4abe04c8bfb1540c4, type: 3}
   price: 240
   priceText: {fileID: 1476316257}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _newPlant: {fileID: 0}
+  plantLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  sizeHalfBox: {x: 1, y: 2, z: 1}
 --- !u!1 &634467790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1527,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911779557
 GameObject:
@@ -1733,12 +1741,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0.45298544, y: 0.0030295812, z: -0.0012145184, w: -0.891512}
-  m_LocalPosition: {x: 0.24822044, y: 8.088077, z: -4.8381925}
+  m_LocalPosition: {x: -58.451782, y: 10.588077, z: -10.738193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4274285655175669}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &1129620756
 GameObject:
@@ -1951,19 +1959,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220134924}
   m_CullTransparentMesh: 1
---- !u!65 &1245036356
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111085408770693}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!54 &1245036357
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1978,7 +1973,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!1 &1298585360
 GameObject:
@@ -2221,7 +2216,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1373832411}
         m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
-        m_MethodName: TryBuyPlant
+        m_MethodName: TryPlacingPlant
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2282,12 +2277,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantPrefab: {fileID: 2418029187350170603, guid: 641cc53dd58ff174cbada833489b3c36, type: 3}
+  _ghostPlantPrefab: {fileID: 9020793867165949008, guid: ec01aa57e3398d7488fc3ae56c4dfb3c, type: 3}
   price: 500
   priceText: {fileID: 911779559}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _newPlant: {fileID: 0}
+  plantLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  sizeHalfBox: {x: 1, y: 2, z: 1}
 --- !u!1 &1448481243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,7 +2936,7 @@ Transform:
   - {fileID: 1621991539178435561}
   - {fileID: 644960785175939118}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1896962675
 GameObject:
@@ -2996,7 +2995,7 @@ GameObject:
   - component: {fileID: 1944235295}
   - component: {fileID: 1944235294}
   m_Layer: 5
-  m_Name: PlayerGoldText
+  m_Name: PlayerGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3298,7 +3297,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2004896634}
         m_TargetAssemblyTypeName: PlantButton, Assembly-CSharp
-        m_MethodName: TryBuyPlant
+        m_MethodName: TryPlacingPlant
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3359,12 +3358,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantPrefab: {fileID: 9063657798506995133, guid: 1eee8a79ba90e68459ccb1dff9832285, type: 3}
+  _ghostPlantPrefab: {fileID: 8155080534712120022, guid: d667ad8acf38fd443920da931325700f, type: 3}
   price: 450
   priceText: {fileID: 1220134926}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _newPlant: {fileID: 0}
+  plantLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  sizeHalfBox: {x: 1, y: 2, z: 1}
 --- !u!1 &2014606222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,7 +3464,7 @@ RectTransform:
   - {fileID: 463544685}
   - {fileID: 1364337434}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3543,9 +3546,9 @@ GameObject:
   - component: {fileID: 4274285655175669}
   - component: {fileID: 95782877699583645}
   - component: {fileID: 1245036357}
-  - component: {fileID: 1245036356}
   - component: {fileID: 95782877699583646}
   - component: {fileID: 95782877699583647}
+  - component: {fileID: 95782877699583648}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4214,15 +4217,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111085408770693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.7, y: 3, z: -5.9}
+  m_LocalPosition: {x: -58.7, y: 2.5, z: -5.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1896962676}
   - {fileID: 701960339}
-  - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4345886126172299
 Transform:
@@ -4585,8 +4587,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   Armory: {fileID: 701960340}
-  animatorPlayer: {fileID: 95782877699583645}
-  body: {fileID: 1896962676}
 --- !u!114 &95782877699583647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4603,6 +4603,24 @@ MonoBehaviour:
   currentHealth: 7
   backgroundMaxHealth: {fileID: 25319664}
   foregroundCurrentHealth: {fileID: 1298585361}
+--- !u!143 &95782877699583648
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111085408770693}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.36
+  m_Radius: 0.53
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.52, z: 0}
 --- !u!137 &137937364692716393
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -5585,7 +5603,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24, y: 2.4, z: 24}
+  m_Size: {x: 23, y: 2.3, z: 23}
   m_Center: {x: -0.35178453, y: 1.0241653, z: 0.18270569}
 --- !u!1 &3598380854735094518
 GameObject:
