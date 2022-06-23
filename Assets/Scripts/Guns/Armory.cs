@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Armory : MonoBehaviour{
     [SerializeField] private Gun[] guns;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _clip;
     private int currentIndexOfGun;
 
     public int CurrentIndexOfGun => currentIndexOfGun;
@@ -66,5 +68,6 @@ public class Armory : MonoBehaviour{
 
         guns[indexOfNewGun].gameObject.SetActive(true);
         OnChangeGun?.Invoke();
+        _audioSource.PlayOneShot(_clip);
     }
 }
