@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour{
     [SerializeField] private int damage;
-    [SerializeField] private float lifeTime;
-    private float time;
     private Rigidbody rb;
 
     public PoolOfBullets Origin;
@@ -16,22 +14,16 @@ public class Bullet : MonoBehaviour{
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update(){
-        time += Time.deltaTime;
-        if (time > lifeTime){
-            Origin.Reclaim(this);
-        }
-    }
 
     private void OnTriggerEnter(Collider other){
         if (other.TryGetComponent(out EnemyHealth enemyHealth)){
             enemyHealth.TakeDamage(damage);
+            Origin.Reclaim(this);
         }
     }
 
 
     public void Init(Vector3 velocity, Vector3 position){
-        time = 0;
         transform.position = position;
         rb.velocity = velocity;
         transform.rotation = Quaternion.LookRotation(velocity);

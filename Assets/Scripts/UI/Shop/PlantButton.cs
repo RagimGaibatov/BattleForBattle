@@ -26,7 +26,10 @@ public class PlantButton : MonoBehaviour{
     [SerializeField] private AudioClip buildedClip;
     [SerializeField] private AudioClip notEnoughGoldClip;
 
+    private AllPlants _allPlants;
+
     private void Start(){
+        _allPlants = FindObjectOfType<AllPlants>();
         _playerResources = FindObjectOfType<Resources>();
         priceText.text = price.ToString();
         _GhostPlant = Instantiate(_ghostPlantPrefab, transform.position, Quaternion.identity);
@@ -71,8 +74,10 @@ public class PlantButton : MonoBehaviour{
                 if (isTouching == false && isCursorOverGround){
                     _playerResources.Gold -= price;
                     _playerResources.UpdateGoldText();
-                    Instantiate(_plantPrefab, _GhostPlant.transform.position, Quaternion.identity);
+                    Plant newPlant = Instantiate(_plantPrefab, _GhostPlant.transform.position, Quaternion.identity,
+                        _allPlants.transform);
                     GhostOff();
+                    _allPlants.AddPlantToList(newPlant);
                     _audioSource.PlayOneShot(buildedClip);
                 }
 

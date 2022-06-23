@@ -9,7 +9,8 @@ public class EnemySpawner : MonoBehaviour{
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private float timeToSpawn;
     [SerializeField] private int sizeOfAreaSpawn;
-    
+
+    [SerializeField] private float timeToDestroyEnemy;
 
     private List<Enemy> enemies = new List<Enemy>();
 
@@ -38,8 +39,10 @@ public class EnemySpawner : MonoBehaviour{
         enemies.Add(enemy);
     }
 
-    public void ReclaimEnemy(Enemy enemy){
+
+    public IEnumerator ReclaimEnemy(Enemy enemy){
         enemies.Remove(enemy);
+        yield return new WaitForSeconds(timeToDestroyEnemy);
         Destroy(enemy.gameObject);
     }
 }

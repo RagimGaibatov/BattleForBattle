@@ -7,7 +7,7 @@ public class PlantHealth : MonoBehaviour{
     [SerializeField] private Plant _plant;
 
 
-    void TakeDamage(int damage){
+    public void TakeDamage(int damage){
         health -= damage;
         if (health <= 0){
             _plant.Die();

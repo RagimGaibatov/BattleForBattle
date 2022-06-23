@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour{
     [SerializeField] private float speed = 5f;
     [SerializeField] private Armory Armory;
@@ -34,7 +35,6 @@ public class Player : MonoBehaviour{
         Vector3 vectorMove = new Vector3(inputHorizontal, 0f, inputForward).normalized;
 
         _characterController.Move(vectorMove * Time.deltaTime * speed);
-
         if (vectorMove != Vector3.zero){
             transform.rotation = Quaternion.LookRotation(vectorMove);
         }

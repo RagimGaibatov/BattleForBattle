@@ -5108,6 +5108,7 @@ MonoBehaviour:
   issuedItemPrefab: {fileID: 6232099070946327604, guid: 8ccd531a7d3aa114a9fe36609f032266, type: 3}
   spawnTransform: {fileID: 1951570884487736564}
   timeToIssueItem: 15
+  _plantHealth: {fileID: 1951570884998997950}
 --- !u!114 &1951570884998997950
 MonoBehaviour:
   m_ObjectHideFlags: 0
