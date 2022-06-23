@@ -6,7 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-public class Plant : MonoBehaviour, ITargetForEnemy{
+public class Plant : MonoBehaviour{
     [SerializeField] private GameObject issuedItemPrefab;
     [SerializeField] private Transform spawnTransform;
     [SerializeField] private float timeToIssueItem;
@@ -30,9 +30,5 @@ public class Plant : MonoBehaviour, ITargetForEnemy{
     public void Die(){
         _allPlants.RemovePlantFromList(this);
         Destroy(gameObject);
-    }
-
-    public void TakeDamageOnYourself(int damage){
-        _plantHealth.TakeDamage(damage);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, ITargetForEnemy{
+public class PlayerHealth : MonoBehaviour{
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     private Player _player;
@@ -19,9 +19,6 @@ public class PlayerHealth : MonoBehaviour, ITargetForEnemy{
         RefreshUIHealth();
     }
 
-    public void TakeDamageOnYourself(int damage){
-        TakeDamage(damage);
-    }
 
     public void TakeDamage(int damage){
         currentHealth -= damage;

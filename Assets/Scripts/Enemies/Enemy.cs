@@ -25,8 +25,6 @@ public class Enemy : MonoBehaviour{
     private Plant _plantTarget;
     private PlayerHealth _playerHealth;
 
-    private ITargetForEnemy _targetForEnemy;
-
     private Animator _animatorEnemy;
     private EnemyState _enemyState;
 
