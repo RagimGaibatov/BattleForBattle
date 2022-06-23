@@ -72,7 +72,7 @@ MonoBehaviour:
   goldForMurder: 3
   movementSpeed: 5
   damage: 1
-  maxDistanceToAttack: 0.7
+  maxDistanceToAttack: 2
   periodAttack: 2
 --- !u!114 &4984413519912659030
 MonoBehaviour:

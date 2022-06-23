@@ -22,7 +22,9 @@ public class Enemy : MonoBehaviour{
     public EnemySpawner OriginSpawner{ private get; set; }
 
     private AllPlants _allPlants;
-    private Plant _plantTarget;
+
+
+    private TargetForEnemy _targetForEnemy;
     private PlayerHealth _playerHealth;
 
     private Animator _animatorEnemy;
@@ -41,7 +43,7 @@ public class Enemy : MonoBehaviour{
             return;
         }
 
-        if (_plantTarget && targetVector.magnitude < maxDistanceToAttack){
+        if (_targetForEnemy && targetVector.magnitude < maxDistanceToAttack){
             _enemyState = EnemyState.Attacking;
         }
         else{
@@ -50,29 +52,35 @@ public class Enemy : MonoBehaviour{
 
         if (_enemyState == EnemyState.Walking){
             _animatorEnemy.SetTrigger("Walk");
-            if (_plantTarget == null){
-                Vector3 shortestVector = Vector3.positiveInfinity;
-                for (int i = 0; i < _allPlants.plantsList.Count; i++){
-                    Vector3 vectorBetweenTargets = _allPlants.plantsList[i].transform.position - transform.position;
-                    if (shortestVector.sqrMagnitude > vectorBetweenTargets.sqrMagnitude){
-                        shortestVector = vectorBetweenTargets;
-                        _plantTarget = _allPlants.plantsList[i];
-                        targetVector = _plantTarget.transform.position - transform.position;
+            if (_targetForEnemy == null){
+                float randomValue = Random.value;
+                if (randomValue <= 0.9f){
+                    Vector3 shortestVector = Vector3.positiveInfinity;
+                    for (int i = 0; i < _allPlants.plantsList.Count; i++){
+                        Vector3 vectorBetweenTargets = _allPlants.plantsList[i].transform.position - transform.position;
+                        if (shortestVector.sqrMagnitude > vectorBetweenTargets.sqrMagnitude){
+                            shortestVector = vectorBetweenTargets;
+                            _targetForEnemy = _allPlants.plantsList[i];
+                        }
                     }
+                }
+                else{
+                    _targetForEnemy = _playerHealth;
                 }
             }
             else{
-                targetVector = _plantTarget.transform.position - transform.position;
+                targetVector = _targetForEnemy.transform.position - transform.position;
                 transform.rotation = Quaternion.LookRotation(targetVector);
                 transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
             }
         }
 
         if (_enemyState == EnemyState.Attacking){
+            targetVector = _targetForEnemy.transform.position - transform.position;
             if (Time.time > lastAttackTime + periodAttack){
                 _animatorEnemy.SetTrigger("Attack");
                 lastAttackTime = Time.time;
-                _plantTarget._plantHealth.TakeDamage(damage);
+                _targetForEnemy.TakeDamage(damage);
             }
         }
     }

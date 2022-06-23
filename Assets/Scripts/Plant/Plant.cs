@@ -6,7 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-public class Plant : MonoBehaviour{
+public class Plant : TargetForEnemy{
     [SerializeField] private GameObject issuedItemPrefab;
     [SerializeField] private Transform spawnTransform;
     [SerializeField] private float timeToIssueItem;
@@ -25,6 +25,10 @@ public class Plant : MonoBehaviour{
             Instantiate(issuedItemPrefab, spawnTransform.position, Quaternion.identity, transform);
             time = 0;
         }
+    }
+
+    public override void TakeDamage(int damage){
+        _plantHealth.TakeDamage(damage);
     }
 
     public void Die(){

@@ -20,15 +20,16 @@ public class Player : MonoBehaviour{
     }
 
     private void Update(){
+        if (!isAlive){
+            _animatorPlayer.SetTrigger("Death");
+            return;
+        }
+
         Move();
         Attack();
     }
 
     void Move(){
-        if (!isAlive){
-            return;
-        }
-
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputForward = Input.GetAxis("Vertical");
 
@@ -55,7 +56,10 @@ public class Player : MonoBehaviour{
     }
 
     public void Die(){
-        _animatorPlayer.SetTrigger("Death");
+        if (isAlive){
+            _animatorPlayer.SetTrigger("Death");
+        }
+
         isAlive = false;
     }
 

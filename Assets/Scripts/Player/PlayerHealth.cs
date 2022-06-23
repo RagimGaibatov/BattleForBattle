@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour{
+public class PlayerHealth : TargetForEnemy{
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     private Player _player;
@@ -19,8 +19,10 @@ public class PlayerHealth : MonoBehaviour{
         RefreshUIHealth();
     }
 
-
-    public void TakeDamage(int damage){
+    public override void TakeDamage(int damage){
+        if (currentHealth <= 0){
+            return;
+        }
         currentHealth -= damage;
         _player.AnimationOfTakeDamage();
         if (currentHealth <= 0){
@@ -29,7 +31,6 @@ public class PlayerHealth : MonoBehaviour{
 
         RefreshUIHealth();
     }
-
 
     public void AddHealth(int health){
         currentHealth += health;
