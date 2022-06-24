@@ -73,7 +73,7 @@ MonoBehaviour:
   movementSpeed: 5
   damage: 1
   maxDistanceToAttack: 2
-  periodAttack: 2
+  periodAttack: 2.5
 --- !u!114 &4984413519912659030
 MonoBehaviour:
   m_ObjectHideFlags: 0

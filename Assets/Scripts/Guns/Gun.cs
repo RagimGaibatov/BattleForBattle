@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour{
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip shotSoundClip;
 
+    [SerializeField] private ParticleSystem _shotParticle;
 
     public int Ammo => ammo;
 
@@ -56,6 +57,7 @@ public class Gun : MonoBehaviour{
 
         ammo -= bulletsInOneShot;
         currentTimeFromLastShot = 0;
+        _shotParticle.Play();
         OnUpdateAmmo?.Invoke();
         _audioSource.PlayOneShot(shotSoundClip);
     }
