@@ -17,8 +17,8 @@ public class Enemy : MonoBehaviour{
     [SerializeField] private float movementSpeed;
     [SerializeField] private int damage;
     [SerializeField] private float maxDistanceToAttack;
-    [SerializeField] private float periodAttack;
-    private float lastAttackTime;
+
+
     public EnemySpawner OriginSpawner{ private get; set; }
 
     private AllPlants _allPlants;
@@ -77,12 +77,13 @@ public class Enemy : MonoBehaviour{
 
         if (_enemyState == EnemyState.Attacking){
             targetVector = _targetForEnemy.transform.position - transform.position;
-            if (Time.time > lastAttackTime + periodAttack){
-                _animatorEnemy.SetTrigger("Attack");
-                lastAttackTime = Time.time;
-                _targetForEnemy.TakeDamage(damage);
-            }
+
+            _animatorEnemy.SetTrigger("Attack");
         }
+    }
+
+    public void DealDamage(){
+        _targetForEnemy.TakeDamage(damage);
     }
 
 
