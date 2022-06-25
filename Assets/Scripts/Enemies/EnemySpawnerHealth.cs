@@ -9,6 +9,8 @@ public class EnemySpawnerHealth : MonoBehaviour{
     [SerializeField] private int currentHealth;
 
 
+    public float HealthInPercentage => (float) currentHealth / maxHealth;
+
     private EnemySpawner _enemySpawner;
 
     [SerializeField] private Image winScreen;

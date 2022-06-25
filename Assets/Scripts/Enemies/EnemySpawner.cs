@@ -18,6 +18,12 @@ public class EnemySpawner : MonoBehaviour{
 
     public List<Enemy> Enemies => enemies;
 
+    private EnemySpawnerHealth _enemySpawnerHealth;
+
+    private void Start(){
+        _enemySpawnerHealth = GetComponent<EnemySpawnerHealth>();
+    }
+
 
     private void Update(){
         timeFromLastSpawn += Time.deltaTime;
@@ -25,23 +31,23 @@ public class EnemySpawner : MonoBehaviour{
             float xPosition = transform.position.x + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
             float zPosition = transform.position.z + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
             Vector3 spawnPos = new Vector3(xPosition, transform.position.y, zPosition);
-            if (timeToSpawn < -0.3f){
-                timeToSpawn = 4f;
+            if (timeToSpawn < -0.2f){
+                timeToSpawn = 15f * _enemySpawnerHealth.HealthInPercentage;
             }
 
             Enemy enemy;
             switch (Random.value){
                 case > 0.92f:
                     enemy = Instantiate(_enemyPrefabs[2], spawnPos, Quaternion.identity);
-                    timeToSpawn += 0.5f;
+                    timeToSpawn += 0.4f;
                     break;
                 case > 0.7f:
                     enemy = Instantiate(_enemyPrefabs[1], spawnPos, Quaternion.identity);
-                    timeToSpawn += 0.2f;
+                    timeToSpawn += 0.1f;
                     break;
                 default:
                     enemy = Instantiate(_enemyPrefabs[0], spawnPos, Quaternion.identity);
-                    timeToSpawn -= 0.5f;
+                    timeToSpawn -= 0.4f;
                     break;
             }
 

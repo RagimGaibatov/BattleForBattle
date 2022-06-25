@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7228b4c5db4b145a702a8a1e1606d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldForMurder: 15
+  goldForMurder: 30
   movementSpeed: 5
   damage: 2
   maxDistanceToAttack: 2
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2ecdade9796ea4e9c510703ae9e77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 9
+  health: 14
 --- !u!135 &6099631836090535413
 SphereCollider:
   m_ObjectHideFlags: 0
