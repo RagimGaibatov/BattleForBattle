@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: 74702fbd6f3c2004cb11b1a472a24477, type: 3}
-  _amountOfAmmunition: 6
+  _amountOfAmmunition: 12
   _gunType: 1
 --- !u!135 &6492151063307017950
 SphereCollider:

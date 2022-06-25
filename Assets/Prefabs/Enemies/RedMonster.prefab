@@ -69,11 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7228b4c5db4b145a702a8a1e1606d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldForMurder: 3
-  movementSpeed: 5
+  goldForMurder: 4
+  movementSpeed: 3
   damage: 1
   maxDistanceToAttack: 2
-  periodAttack: 2.5
 --- !u!114 &4984413519912659030
 MonoBehaviour:
   m_ObjectHideFlags: 0

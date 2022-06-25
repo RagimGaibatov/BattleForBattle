@@ -19,6 +19,12 @@ public class Bullet : MonoBehaviour{
         if (other.TryGetComponent(out EnemyHealth enemyHealth)){
             enemyHealth.TakeDamage(damage);
             Origin.Reclaim(this);
+            return;
+        }
+
+        if (other.TryGetComponent(out EnemySpawnerHealth enemySpawnerHealth)){
+            enemySpawnerHealth.TakeDamage(damage);
+            Origin.Reclaim(this);
         }
     }
 

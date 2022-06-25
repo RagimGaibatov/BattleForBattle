@@ -6,7 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour{
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Enemy[] _enemyPrefabs;
     [SerializeField] private float timeToSpawn;
     [SerializeField] private int sizeOfAreaSpawn;
 
@@ -14,23 +14,42 @@ public class EnemySpawner : MonoBehaviour{
 
     private List<Enemy> enemies = new List<Enemy>();
 
-    private float time;
+    private float timeFromLastSpawn;
 
     public List<Enemy> Enemies => enemies;
 
 
     private void Update(){
-        time += Time.deltaTime;
-        if (time >= timeToSpawn){
+        timeFromLastSpawn += Time.deltaTime;
+        if (timeFromLastSpawn >= timeToSpawn){
             float xPosition = transform.position.x + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
             float zPosition = transform.position.z + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
             Vector3 spawnPos = new Vector3(xPosition, transform.position.y, zPosition);
-            Enemy enemy = Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
+            if (timeToSpawn < -0.3f){
+                timeToSpawn = 4f;
+            }
+
+            Enemy enemy;
+            switch (Random.value){
+                case > 0.92f:
+                    enemy = Instantiate(_enemyPrefabs[2], spawnPos, Quaternion.identity);
+                    timeToSpawn += 0.5f;
+                    break;
+                case > 0.7f:
+                    enemy = Instantiate(_enemyPrefabs[1], spawnPos, Quaternion.identity);
+                    timeToSpawn += 0.2f;
+                    break;
+                default:
+                    enemy = Instantiate(_enemyPrefabs[0], spawnPos, Quaternion.identity);
+                    timeToSpawn -= 0.5f;
+                    break;
+            }
+
             enemy.transform.SetParent(transform);
 
             enemy.OriginSpawner = this;
             AddEnemy(enemy);
-            time = 0;
+            timeFromLastSpawn = 0;
         }
     }
 

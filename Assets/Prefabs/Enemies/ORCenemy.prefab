@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldForMurder: 50
-  movementSpeed: 2
+  movementSpeed: 1
   damage: 5
   maxDistanceToAttack: 1.2
 --- !u!114 &3132119127549828105

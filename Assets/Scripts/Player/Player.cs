@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour{
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour{
     private CharacterController _characterController;
 
     private bool isAlive = true;
+    [SerializeField] private Image loseScreenImage;
 
 
     private void Awake(){
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour{
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputForward = Input.GetAxis("Vertical");
 
-        Vector3 vectorMove = new Vector3(inputHorizontal, 0f, inputForward).normalized;
+        Vector3 vectorMove = new Vector3(-inputHorizontal, 0f, -inputForward).normalized;
 
         _characterController.Move(vectorMove * Time.deltaTime * speed);
         if (vectorMove != Vector3.zero){
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour{
             _animatorPlayer.SetTrigger("Death");
         }
 
+        loseScreenImage.gameObject.SetActive(true);
         isAlive = false;
     }
 
