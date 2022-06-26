@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour{
             float zPosition = transform.position.z + Random.Range(-sizeOfAreaSpawn / 2f, sizeOfAreaSpawn / 2f);
             Vector3 spawnPos = new Vector3(xPosition, transform.position.y, zPosition);
             if (timeToSpawn < -0.2f){
-                timeToSpawn = 15f * _enemySpawnerHealth.HealthInPercentage;
+                timeToSpawn = 6f * _enemySpawnerHealth.HealthInPercentage;
             }
 
             Enemy enemy;

@@ -68,19 +68,20 @@ public class Gun : MonoBehaviour{
     }
 
     void RotateToClosestEnemy(){
-        if (_enemySpawner.Enemies.Count == 0){
-            return;
-        }
-
         Vector3 directionToClosestEnemy = Vector3.positiveInfinity;
         float length = Single.PositiveInfinity;
 
-        for (int i = 0; i < _enemySpawner.Enemies.Count; i++){
-            Vector3 direction = (_enemySpawner.Enemies[i].transform.position - transform.position);
-            if (length > direction.sqrMagnitude){
-                directionToClosestEnemy = direction;
-                length = directionToClosestEnemy.sqrMagnitude;
+        if (_enemySpawner.Enemies.Count != 0){
+            for (int i = 0; i < _enemySpawner.Enemies.Count; i++){
+                Vector3 direction = (_enemySpawner.Enemies[i].transform.position - transform.position);
+                if (length > direction.sqrMagnitude){
+                    directionToClosestEnemy = direction;
+                    length = directionToClosestEnemy.sqrMagnitude;
+                }
             }
+        }
+        else{
+            directionToClosestEnemy = _enemySpawner.transform.position - transform.position;
         }
 
         transform.rotation = Quaternion.LookRotation(directionToClosestEnemy);
