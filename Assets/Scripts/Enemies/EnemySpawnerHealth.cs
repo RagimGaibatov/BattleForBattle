@@ -9,6 +9,10 @@ public class EnemySpawnerHealth : MonoBehaviour{
     [SerializeField] private int currentHealth;
 
 
+    public int CurrentHealth{
+        get => currentHealth;
+        set => currentHealth = value;
+    }
     public float HealthInPercentage => (float) currentHealth / maxHealth;
 
     private EnemySpawner _enemySpawner;
@@ -34,9 +38,9 @@ public class EnemySpawnerHealth : MonoBehaviour{
     }
 
 
-    void RefreshUIHealth(){
+    public void RefreshUIHealth(){
         var sizeDelta = foregroundCurrentHealth.sizeDelta;
-        sizeDelta.x = (float) currentHealth / maxHealth * backgroundMaxHealth.sizeDelta.x;
+        sizeDelta.x = HealthInPercentage * backgroundMaxHealth.sizeDelta.x;
         foregroundCurrentHealth.sizeDelta = new Vector2(sizeDelta.x, sizeDelta.y);
     }
 }

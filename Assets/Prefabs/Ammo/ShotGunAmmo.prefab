@@ -49,6 +49,7 @@ MonoBehaviour:
   _audioClip: {fileID: 8300000, guid: 74702fbd6f3c2004cb11b1a472a24477, type: 3}
   _amountOfAmmunition: 12
   _gunType: 1
+  <SaveId>k__BackingField: 13
 --- !u!135 &6492151063307017950
 SphereCollider:
   m_ObjectHideFlags: 0

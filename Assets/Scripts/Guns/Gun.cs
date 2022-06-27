@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour{
+public class Gun : MonoBehaviour, ISaveable{
     [SerializeField] private int ammo;
     [SerializeField] private float periodAttack;
     [SerializeField] private int bulletsInOneShot;
@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour{
 
     [SerializeField] private ParticleSystem _shotParticle;
 
+
+    [field: SerializeField] public int SaveId{ get; private set; }
     public int Ammo => ammo;
 
     private float updateTimeToRotate = 0.2f;
@@ -85,5 +87,18 @@ public class Gun : MonoBehaviour{
         }
 
         transform.rotation = Quaternion.LookRotation(directionToClosestEnemy);
+    }
+
+    public SaveData Save(){
+        SaveData saveData = new SaveData();
+        saveData.saveId = SaveId;
+        saveData.loadType = LoadType.Restore;
+        saveData.ammo = ammo;
+        return saveData;
+    }
+
+    public void Load(SaveData data){
+        ammo = data.ammo;
+        OnUpdateAmmo.Invoke();
     }
 }

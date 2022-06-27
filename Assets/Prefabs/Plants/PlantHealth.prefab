@@ -265,6 +265,7 @@ MonoBehaviour:
   spawnTransform: {fileID: 8778692149018360332}
   timeToIssueItem: 40
   _plantHealth: {fileID: 2418029187350170600}
+  <SaveId>k__BackingField: 11
 --- !u!114 &2418029187350170600
 MonoBehaviour:
   m_ObjectHideFlags: 0

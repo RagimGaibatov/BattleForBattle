@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ammunition : MonoBehaviour{
+public class Ammunition : MonoBehaviour, ISaveable{
     AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
 
@@ -17,6 +17,8 @@ public class Ammunition : MonoBehaviour{
     [SerializeField] private int _amountOfAmmunition;
     [SerializeField] private GunType _gunType;
 
+    [field: SerializeField] public int SaveId{ get; private set; }
+
 
     private void OnTriggerEnter(Collider other){
         if (other.GetComponent<Player>()){
@@ -26,5 +28,17 @@ public class Ammunition : MonoBehaviour{
             _audioSource.PlayOneShot(_audioClip);
             Destroy(gameObject);
         }
+    }
+
+    public SaveData Save(){
+        SaveData saveData = new SaveData();
+        saveData.saveId = SaveId;
+        saveData.loadType = LoadType.New;
+        saveData.position = transform.position;
+        return saveData;
+    }
+
+    public void Load(SaveData data){
+        transform.position = data.position;
     }
 }

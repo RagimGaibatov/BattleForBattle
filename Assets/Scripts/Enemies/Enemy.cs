@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Enemy : MonoBehaviour{
+public class Enemy : MonoBehaviour, ISaveable{
     public enum EnemyState{
         Attacking,
         Walking,
@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour{
     [SerializeField] private int damage;
     [SerializeField] private float maxDistanceToAttack;
 
+    [field: SerializeField] public int SaveId{ get; private set; }
 
     public EnemySpawner OriginSpawner{ private get; set; }
 
@@ -94,5 +95,20 @@ public class Enemy : MonoBehaviour{
         resources.Gold += goldForMurder;
         resources.UpdateGoldText();
         StartCoroutine(OriginSpawner.ReclaimEnemy(this));
+    }
+
+    public SaveData Save(){
+        SaveData _saveData = new SaveData();
+        _saveData.saveId = SaveId;
+        _saveData.loadType = LoadType.New;
+        _saveData.position = transform.position;
+        _saveData.health = GetComponent<EnemyHealth>().Health;
+        return _saveData;
+    }
+
+    public void Load(SaveData data){
+        GetComponent<EnemyHealth>().Health = data.health;
+        transform.position = data.position;
+        FindObjectOfType<EnemySpawner>().AddEnemy(this);
     }
 }

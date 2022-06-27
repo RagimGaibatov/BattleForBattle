@@ -4979,6 +4979,8 @@ MonoBehaviour:
   timeToSpawn: 8
   sizeOfAreaSpawn: 10
   timeToDestroyEnemy: 1.5
+  <SaveId>k__BackingField: 7
+  _enemySpawnerHealth: {fileID: 866440830}
 --- !u!4 &866440829
 Transform:
   m_ObjectHideFlags: 0
@@ -7681,6 +7683,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332097990}
   m_Mesh: {fileID: 3015167987163436581, guid: ddd36401006c8654eae1d9a6bcd6380d, type: 3}
+--- !u!1 &1332236993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332236995}
+  - component: {fileID: 1332236994}
+  m_Layer: 0
+  m_Name: JsonSaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1332236994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332236993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414395d4310fb9949b6a206df9042e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveablesMonoBehaviours:
+  - {fileID: 3132119127549828107, guid: e476deef006f1184b94b1cdaf5ec7175, type: 3}
+  - {fileID: 1411012152874441225, guid: 5409ee749bb0e4b4faf1c79c1a229ef2, type: 3}
+  - {fileID: 6099631836090535414, guid: 741bdce85b30ed840b863689eef31640, type: 3}
+--- !u!4 &1332236995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332236993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347727265
 GameObject:
   m_ObjectHideFlags: 0
@@ -14771,6 +14821,7 @@ MonoBehaviour:
   currentHealth: 9
   backgroundMaxHealth: {fileID: 25319664}
   foregroundCurrentHealth: {fileID: 1298585361}
+  <SaveId>k__BackingField: 0
 --- !u!143 &95782877699583648
 CharacterController:
   m_ObjectHideFlags: 0
@@ -14803,6 +14854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 200
   goldText: {fileID: 1944235295}
+  <SaveId>k__BackingField: 16
 --- !u!137 &137937364692716393
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -15394,6 +15446,7 @@ MonoBehaviour:
   _audioSource: {fileID: 4619383848291733795}
   shotSoundClip: {fileID: 8300000, guid: da85f9e80dfc766448d9163d17a918c7, type: 3}
   _shotParticle: {fileID: 957371665}
+  <SaveId>k__BackingField: 5
 --- !u!33 &2349208722469236609
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17249,6 +17302,7 @@ MonoBehaviour:
   _audioSource: {fileID: 4619383848291733795}
   shotSoundClip: {fileID: 8300000, guid: 7f474da02aebcbe48958090b77583812, type: 3}
   _shotParticle: {fileID: 661389560}
+  <SaveId>k__BackingField: 6
 --- !u!1 &8201491516044648785
 GameObject:
   m_ObjectHideFlags: 0
@@ -17302,6 +17356,7 @@ MonoBehaviour:
   _audioSource: {fileID: 4619383848291733795}
   shotSoundClip: {fileID: 8300000, guid: db03cfa0ff7aaed48916c4c2ded38ca8, type: 3}
   _shotParticle: {fileID: 2389386851738069804}
+  <SaveId>k__BackingField: 4
 --- !u!33 &8220334263640411431
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfHealth: 3
   _audioClip: {fileID: 8300000, guid: 57aa9890c4f89cd48accb45590de6664, type: 3}
+  <SaveId>k__BackingField: 15
 --- !u!1 &2072494835006268777
 GameObject:
   m_ObjectHideFlags: 0

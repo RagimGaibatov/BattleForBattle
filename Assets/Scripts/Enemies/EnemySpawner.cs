@@ -5,24 +5,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour{
+public class EnemySpawner : MonoBehaviour, ISaveable{
     [SerializeField] private Enemy[] _enemyPrefabs;
     [SerializeField] private float timeToSpawn;
     [SerializeField] private int sizeOfAreaSpawn;
 
     [SerializeField] private float timeToDestroyEnemy;
 
+    [field: SerializeField] public int SaveId{ get; private set; }
+
     private List<Enemy> enemies = new List<Enemy>();
 
     private float timeFromLastSpawn;
 
+
     public List<Enemy> Enemies => enemies;
 
-    private EnemySpawnerHealth _enemySpawnerHealth;
-
-    private void Start(){
-        _enemySpawnerHealth = GetComponent<EnemySpawnerHealth>();
-    }
+    [SerializeField] EnemySpawnerHealth _enemySpawnerHealth;
 
 
     private void Update(){
@@ -60,7 +59,7 @@ public class EnemySpawner : MonoBehaviour{
     }
 
 
-    void AddEnemy(Enemy enemy){
+    public void AddEnemy(Enemy enemy){
         enemies.Add(enemy);
     }
 
@@ -69,5 +68,21 @@ public class EnemySpawner : MonoBehaviour{
         enemies.Remove(enemy);
         yield return new WaitForSeconds(timeToDestroyEnemy);
         Destroy(enemy.gameObject);
+    }
+
+
+    public SaveData Save(){
+        SaveData _saveData = new SaveData();
+        _saveData.saveId = SaveId;
+        _saveData.loadType = LoadType.Restore;
+        _saveData.timeToSpawn = timeToSpawn;
+        _saveData.health = _enemySpawnerHealth.CurrentHealth;
+        return _saveData;
+    }
+
+    public void Load(SaveData data){
+        timeToSpawn = data.timeToSpawn;
+        _enemySpawnerHealth.CurrentHealth = data.health;
+        _enemySpawnerHealth.RefreshUIHealth();
     }
 }

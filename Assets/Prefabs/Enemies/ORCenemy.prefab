@@ -332,6 +332,7 @@ MonoBehaviour:
   movementSpeed: 1
   damage: 6
   maxDistanceToAttack: 1.2
+  <SaveId>k__BackingField: 3
 --- !u!114 &3132119127549828105
 MonoBehaviour:
   m_ObjectHideFlags: 0

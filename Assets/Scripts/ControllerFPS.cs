@@ -6,7 +6,7 @@ public class ControllerFPS : MonoBehaviour{
     [SerializeField] private int maxFPS = 60;
 
 
-    void Update(){
+    void Start(){
         Application.targetFrameRate = maxFPS;
     }
 }

@@ -5,8 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-
-public class Plant : TargetForEnemy{
+public class Plant : TargetForEnemy, ISaveable{
     [SerializeField] private GameObject issuedItemPrefab;
     [SerializeField] private Transform spawnTransform;
     [SerializeField] private float timeToIssueItem;
@@ -14,6 +13,8 @@ public class Plant : TargetForEnemy{
 
     private AllPlants _allPlants;
     private float time;
+
+    [field: SerializeField] public int SaveId{ get; private set; }
 
     private void Start(){
         _allPlants = FindObjectOfType<AllPlants>();
@@ -34,5 +35,20 @@ public class Plant : TargetForEnemy{
     public void Die(){
         _allPlants.RemovePlantFromList(this);
         Destroy(gameObject);
+    }
+
+    public SaveData Save(){
+        SaveData _saveData = new SaveData();
+        _saveData.saveId = SaveId;
+        _saveData.loadType = LoadType.New;
+        _saveData.health = _plantHealth.Health;
+        _saveData.position = transform.position;
+        return _saveData;
+    }
+
+    public void Load(SaveData data){
+        _plantHealth.Health = data.health;
+        transform.position = data.position;
+        _allPlants.AddPlantToList(this);
     }
 }
