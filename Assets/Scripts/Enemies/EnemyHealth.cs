@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour{
         health -= damage;
         if (health <= 0){
             GetComponent<Enemy>().Die();
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

@@ -865,7 +865,7 @@ GameObject:
   - component: {fileID: 6099631836090535368}
   - component: {fileID: 6099631836090535414}
   - component: {fileID: 6099631836090535415}
-  - component: {fileID: 6099631836090535413}
+  - component: {fileID: 9206911720235799079}
   m_Layer: 0
   m_Name: TurtleShell
   m_TagString: Untagged
@@ -940,8 +940,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 14
---- !u!135 &6099631836090535413
-SphereCollider:
+--- !u!65 &9206911720235799079
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -951,8 +951,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.41, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6194296053396776090
 GameObject:
   m_ObjectHideFlags: 0
