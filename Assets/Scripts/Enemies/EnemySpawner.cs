@@ -51,8 +51,7 @@ public class EnemySpawner : MonoBehaviour, ISaveable{
             }
 
             enemy.transform.SetParent(transform);
-
-            enemy.OriginSpawner = this;
+            
             AddEnemy(enemy);
             timeFromLastSpawn = 0;
         }
@@ -60,6 +59,7 @@ public class EnemySpawner : MonoBehaviour, ISaveable{
 
 
     public void AddEnemy(Enemy enemy){
+        enemy.OriginSpawner = this;
         enemies.Add(enemy);
     }
 

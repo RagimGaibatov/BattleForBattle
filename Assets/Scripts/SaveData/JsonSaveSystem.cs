@@ -43,7 +43,7 @@ public class JsonSaveSystem : MonoBehaviour{
     }
 
     void SaveGame(){
-        IEnumerable<ISaveable> saveablesOnScene = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
+        IEnumerable<ISaveable> saveablesOnScene = FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveable>();
 
         using (var writer = new StreamWriter(_filePath)){
             foreach (var saveableObject in saveablesOnScene){
@@ -55,8 +55,8 @@ public class JsonSaveSystem : MonoBehaviour{
 
     IEnumerator LoadGame(){
         yield return SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        List<ISaveable> saveablesOnScene = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>().ToList();
-       
+        List<ISaveable> saveablesOnScene = FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveable>().ToList();
+
         using (var reader = new StreamReader(_filePath)){
             string line;
             while ((line = reader.ReadLine()) != null){
@@ -64,6 +64,7 @@ public class JsonSaveSystem : MonoBehaviour{
                 if (saveData.loadType == LoadType.New){
                     ISaveable saveable = saveables.First(e => e.SaveId == saveData.saveId);
                     MonoBehaviour newObject = Instantiate((MonoBehaviour) saveable);
+                    yield return null;
                     ((ISaveable) newObject).Load(saveData);
                 }
                 else{

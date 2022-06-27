@@ -11,9 +11,16 @@ public class AmmoText : MonoBehaviour{
     [SerializeField] private Gun _gun;
 
 
+    private void OnEnable(){
+        _gun.OnUpdateAmmo += UpdateAmmoText;
+    }
+
+    private void OnDisable(){
+        _gun.OnUpdateAmmo -= UpdateAmmoText;
+    }
+
     public void Start(){
         UpdateAmmoText();
-        _gun.OnUpdateAmmo += UpdateAmmoText;
     }
 
 

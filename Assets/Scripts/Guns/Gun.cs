@@ -99,6 +99,6 @@ public class Gun : MonoBehaviour, ISaveable{
 
     public void Load(SaveData data){
         ammo = data.ammo;
-        OnUpdateAmmo.Invoke();
+        OnUpdateAmmo?.Invoke();
     }
 }

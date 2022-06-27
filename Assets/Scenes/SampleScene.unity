@@ -7716,6 +7716,14 @@ MonoBehaviour:
   - {fileID: 3132119127549828107, guid: e476deef006f1184b94b1cdaf5ec7175, type: 3}
   - {fileID: 1411012152874441225, guid: 5409ee749bb0e4b4faf1c79c1a229ef2, type: 3}
   - {fileID: 6099631836090535414, guid: 741bdce85b30ed840b863689eef31640, type: 3}
+  - {fileID: 5949600484308924011, guid: 3e67581d9732af54ea107dcdc9130c1d, type: 3}
+  - {fileID: 7891900510493112925, guid: cf423a5945510f74da7d13bab991c184, type: 3}
+  - {fileID: 2711078543367788280, guid: 8ccd531a7d3aa114a9fe36609f032266, type: 3}
+  - {fileID: 6492151063307017951, guid: 3440f2fe8288f524ea5bd834fbeb605f, type: 3}
+  - {fileID: 9063657798506995133, guid: 1eee8a79ba90e68459ccb1dff9832285, type: 3}
+  - {fileID: 2418029187350170603, guid: 641cc53dd58ff174cbada833489b3c36, type: 3}
+  - {fileID: 1951570884998997951, guid: 9b2c90179e9d8bd42b26e25a02d22b21, type: 3}
+  - {fileID: 701788924853464896, guid: dce9c82e7d5a74f43a7aad28209a53e0, type: 3}
 --- !u!4 &1332236995
 Transform:
   m_ObjectHideFlags: 0
@@ -15437,7 +15445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490252cd0209805458182311bcf11796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 0
+  ammo: 4
   periodAttack: 0.55
   bulletsInOneShot: 2
   bulletSpeed: 13
@@ -17293,7 +17301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372d1e5f902f3a2418fd5f179a14df20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 0
+  ammo: 5
   periodAttack: 0.1
   bulletsInOneShot: 1
   bulletSpeed: 25
